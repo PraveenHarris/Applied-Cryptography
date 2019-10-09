@@ -26,17 +26,37 @@ public class MyTools {
         return rtn;
     }
 
-    public static double[] normalizeFrequencyVector(int[] vector, double norm) {
+    public static double[] normalizeFrequencyVector(int[] vector, double initialLength) {
         double[] rtn = new double[vector.length];
         for (int i = 0; i < vector.length; i++) {
-            rtn[i] = vector[i] / norm;
+            rtn[i] = vector[i] / initialLength;
         }
 
         return rtn;
     }
 
-    public static double[] normalizeFrequencyVector(int[] vector, int norm) {
-        return normalizeFrequencyVector(vector, (double) norm);
+    public static double[] normalizeFrequencyVector(int[] vector, int initialLength) {
+        return normalizeFrequencyVector(vector, (double) initialLength);
+    }
+
+    public static byte[] bitComplement(byte[] byteArray) {
+        byte[] rtn = new byte[byteArray.length];
+        for (int i=0; i<byteArray.length; i++) {
+            rtn[i] = (byte) ~byteArray[i];
+        }
+
+        return rtn;
+    }
+
+    public static byte[] XORByteArrays(byte[] a1, byte[] a2) {
+        byte[] rtn = new byte[Integer.max(a1.length, a2.length)];
+
+
+        for (int i=0; i<rtn.length; i++) {
+            rtn[i] = (byte) (a1[i] ^ a2[i]);
+        }
+
+        return rtn;
     }
 
     /**
@@ -51,6 +71,28 @@ public class MyTools {
         }
 
         return dp;
+    }
+
+    public static double normalizeAndComputeDotProduct(String s) {
+        int[] freq = CryptoTools.getFrequencies(s.getBytes());
+        double[] normalized = normalizeFrequencyVector(freq, s.length());
+
+        return MyTools.computeDotProduct(normalized);
+    }
+
+    public static double[] computeIC(String ct, int maxIterations) {
+        double[] icValues = new double[maxIterations];
+        for (int i=1; i<maxIterations; i++) {
+            int counter = 0;
+            for (int j=0; j<ct.length()-i; j++) {
+                if (ct.charAt(j) == ct.charAt(j+i))
+                    counter++;
+            }
+
+            icValues[i] = counter * 1.0 / ct.length();
+        }
+
+        return icValues;
     }
 }
 
