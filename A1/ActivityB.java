@@ -11,6 +11,8 @@ import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 
+import static util.MyTools.bitComplement;
+
 public class ActivityB {
     public static void main(String[] args) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
 
@@ -45,15 +47,6 @@ public class ActivityB {
         // print value of pt1: original PT
         System.out.println("\n" + new String(pt1));
 
-    }
-
-    private static byte[] bitComplement(byte[] keyInBytes) {
-        byte[] rtn = new byte[keyInBytes.length];
-        for (int i=0; i<keyInBytes.length; i++) {
-            rtn[i] = (byte) ~keyInBytes[i];
-        }
-
-        return rtn;
     }
 
 }
