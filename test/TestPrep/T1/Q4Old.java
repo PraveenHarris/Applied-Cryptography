@@ -1,4 +1,4 @@
-package Test1Prep;
+package test.TestPrep.T1;
 
 import util.Binary;
 import util.CipherEngUtil;
