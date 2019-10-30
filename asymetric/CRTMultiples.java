@@ -53,11 +53,11 @@ public class CRTMultiples {
         return x;
     }
 
-    private static BigInteger computeWhenXInRightSide(BigInteger[][] pairs) {
+    public static BigInteger computeWhenXInRightSide(BigInteger[][] pairs) {
         return compute(pairs);
     }
 
-    private static BigInteger computeWhenXInLeftSide(BigInteger[][] pairs) {
+    public static BigInteger computeWhenXInLeftSide(BigInteger[][] pairs) {
         /*
             Use this method for examples like:
                 x (mod 13) = 2
@@ -74,7 +74,7 @@ public class CRTMultiples {
         return x;
     }
 
-    private static BigInteger computeWhenXInMiddle(BigInteger[][] pairs) {
+    public static BigInteger computeWhenXInMiddle(BigInteger[][] pairs) {
         BigInteger currentGCD = pairs[0][0].subtract(pairs[0][1]);
         for (int i=1; i<pairs.length; i++) {
             currentGCD = currentGCD.gcd(pairs[i][0].subtract(pairs[i][1]));

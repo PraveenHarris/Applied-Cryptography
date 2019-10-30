@@ -1,5 +1,7 @@
 package util;
 
+import java.util.Base64;
+
 public class MyTools {
 
     /**
@@ -7,7 +9,7 @@ public class MyTools {
      * @param asciiCode the ascii code of the letter
      * @param shift number of single shifts
      * @param clockwise true => encrypt, false => decrypt
-     * @return
+     * @return byte shifted by value
      */
     public static byte shiftBy(int asciiCode, int shift, boolean clockwise) {
         if (clockwise) {
@@ -94,5 +96,10 @@ public class MyTools {
 
         return icValues;
     }
+
+    public static String encodeToString(byte[] bytes) {
+        return Base64.getEncoder().encodeToString(bytes);
+    }
+
 }
 
