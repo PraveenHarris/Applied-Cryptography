@@ -2,8 +2,6 @@ package asymetric;
 
 import java.math.BigInteger;
 
-import static util.MathUtil.gcd;
-
 public class CRTMultiples {
 
     private static BigInteger compute(BigInteger[][] pairs) {
@@ -24,28 +22,28 @@ public class CRTMultiples {
         // 1. Compute n_i
         BigInteger[] nValues = new BigInteger[pairs.length];
         BigInteger N = pairs[0][1];
-        for (int i=1; i<pairs.length; i++) {
+        for (int i = 1; i < pairs.length; i++) {
             N = N.multiply(pairs[i][1]);
         }
-        for (int i=0; i<pairs.length; i++) {
+        for (int i = 0; i < pairs.length; i++) {
             nValues[i] = N.divide(pairs[i][1]);
         }
 
         // 2. Compute x_i
         BigInteger[] xValues = new BigInteger[pairs.length];
-        for (int i=0; i<pairs.length; i++) {
+        for (int i = 0; i < pairs.length; i++) {
             xValues[i] = nValues[i].modInverse(pairs[i][1]);
         }
 
         // 3. Compute s_i
         BigInteger[] sValues = new BigInteger[pairs.length];
-        for (int i=0; i<pairs.length; i++) {
+        for (int i = 0; i < pairs.length; i++) {
             sValues[i] = pairs[i][0].multiply(nValues[i]).multiply(xValues[i]);
         }
 
         // 4. Compute sum and mod
         BigInteger x = new BigInteger("0");
-        for (int i=0; i<pairs.length; i++) {
+        for (int i = 0; i < pairs.length; i++) {
             x = x.add(sValues[i]);
         }
         x = x.mod(N);
@@ -65,8 +63,8 @@ public class CRTMultiples {
          */
 
         // change to the form: 2 (mod 13) = x
-        for (int i=0; i<pairs.length; i++) {
-            pairs[i] = new BigInteger[] {pairs[i][1], pairs[i][0]};
+        for (int i = 0; i < pairs.length; i++) {
+            pairs[i] = new BigInteger[]{pairs[i][1], pairs[i][0]};
         }
 
         BigInteger x = compute(pairs);
@@ -76,7 +74,7 @@ public class CRTMultiples {
 
     public static BigInteger computeWhenXInMiddle(BigInteger[][] pairs) {
         BigInteger currentGCD = pairs[0][0].subtract(pairs[0][1]);
-        for (int i=1; i<pairs.length; i++) {
+        for (int i = 1; i < pairs.length; i++) {
             currentGCD = currentGCD.gcd(pairs[i][0].subtract(pairs[i][1]));
         }
 
@@ -114,14 +112,3 @@ public class CRTMultiples {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
