@@ -101,5 +101,13 @@ public class MyTools {
         return Base64.getEncoder().encodeToString(bytes);
     }
 
+    public static byte[] concatenateByteArrays(byte[] b1, byte[] b2) {
+        byte[] temp = b1;
+        b1 = new byte[b1.length + b2.length];
+        System.arraycopy(temp, 0, b1, 0, temp.length);
+        System.arraycopy(b2, 0, b1, temp.length, b2.length);
+
+        return b1;
+    }
 }
 
