@@ -27,8 +27,8 @@ public class HMACEngine {
         int blockSize = blockSizes.get(algorithm);
 
         // multiply pads n times
-        opad = (new String(opad)).repeat(64).getBytes();
-        ipad = (new String(ipad)).repeat(64).getBytes();
+        opad = (new String(opad)).repeat(blockSize).getBytes();
+        ipad = (new String(ipad)).repeat(blockSize).getBytes();
 
         int keyLength = key.length;
         if (keyLength > blockSizes.get(algorithm)) {
