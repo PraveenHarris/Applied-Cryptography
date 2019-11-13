@@ -42,18 +42,6 @@ public class BirthdayEngine {
         return approx;
     }
 
-    public static void main(String[] args) {
-
-        int totalNumberOfDays = 365;
-        int numberOfPeople = 50;
-
-        double actualProbability = BirthdayEngine.computeActualProbability(totalNumberOfDays, numberOfPeople);
-        System.out.println(actualProbability);
-
-        double approximatedProbability = BirthdayEngine.computeApproximation(totalNumberOfDays, numberOfPeople);
-        System.out.println(approximatedProbability);
-
-    }
 }
 
 
