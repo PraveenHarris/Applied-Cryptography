@@ -91,6 +91,7 @@ public class CRTMultiples {
         };
         BigInteger x1 = CRTMultiples.computeWhenXInRightSide(pairs1);
         System.out.println("p1: " + x1);
+        System.out.println();
 
         // initial set up: x (mod 13) = 2 => BI(13), BI(2)
         BigInteger[][] pairs2 = {
@@ -99,6 +100,7 @@ public class CRTMultiples {
         };
         BigInteger x2 = CRTMultiples.computeWhenXInLeftSide(pairs2);
         System.out.println("p2: " + x2);
+        System.out.println();
 
         // initial set up: 44 (mod x) = 2 => BI(44), BI(2)
         BigInteger[][] pairs3 = {
@@ -108,6 +110,30 @@ public class CRTMultiples {
         };
         BigInteger x3 = CRTMultiples.computeWhenXInMiddle(pairs3);
         System.out.println("p3: " + x3);
+        System.out.println();
+
+        /*
+        x mod 2 = 1
+        x mod 3 = 1
+        x mod 4 = 1
+        x mod 5 = 1
+        x mod 6 = 1
+        x mod 7 = 0
+        Ignore 2 and 6 to ensure pairwise co-primality (but check them at the end)
+         */
+        BigInteger[][] pairs4 = {
+//                {new BigInteger("2"), new BigInteger("1")},
+                {new BigInteger("3"), new BigInteger("1")},
+                {new BigInteger("4"), new BigInteger("1")},
+                {new BigInteger("5"), new BigInteger("1")},
+//                {new BigInteger("6"), new BigInteger("1")},
+                {new BigInteger("7"), new BigInteger("0")},
+        };
+        BigInteger x4 = CRTMultiples.computeWhenXInLeftSide(pairs4);
+        // check for the 2 adn 6 ignored earlier
+        System.out.println("Does x mod 2 equal 1? " + x4.mod(BigInteger.TWO).equals(BigInteger.ONE));
+        System.out.println("Does x mod 6 equal 1? " + x4.mod(new BigInteger("6")).equals(BigInteger.ONE));
+        System.out.println("p4: " + x4);
 
     }
 
