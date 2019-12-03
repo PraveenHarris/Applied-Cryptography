@@ -21,7 +21,6 @@ public class MillerRabinTest {
         do {
             System.out.println("FROM asymmetric/MillerRabinTest.java:\t" + b1);
             b1  = b1.pow(2).mod(n);
-
             if (b1.equals(nMinusOne))
                 return  "Probably Prime";
 
