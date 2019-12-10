@@ -97,9 +97,15 @@ public class MyTools {
         return icValues;
     }
 
-    public static String encodeToString(byte[] bytes) {
-        return Base64.getEncoder().encodeToString(bytes);
+    public static String byteArrayToBinaryString(byte[] array) {
+        StringBuilder rtn = new StringBuilder();
+        for (byte b : array) {
+            rtn.append(Integer.toBinaryString(b & 255 | 256).substring(1));
+        }
+
+        return rtn.toString();
     }
+
 
     public static byte[] concatenateByteArrays(byte[] b1, byte[] b2) {
         byte[] temp = b1;
