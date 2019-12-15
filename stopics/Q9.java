@@ -16,7 +16,7 @@ public class Q9 {
             actual = actual.xor(shares[i]);
         }
 
-        //
+        // verification of shares generated
         System.out.println("\n---VERIFICATION");
         System.out.println("exp:\t" + secret);
         System.out.println("actual:\t" + actual);
