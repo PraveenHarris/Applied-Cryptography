@@ -29,7 +29,7 @@ public class SecretShareEngine {
         int from = xRange[0], to = xRange[1];
         int range = to - from;
         Random random = new Random();
-        modulus = modulus==0 ? 101 : modulus;
+        modulus = modulus==0 ? 100003 : modulus;
 
         int[][] shares = new int[totalNumberOfShares][2]; // (x,y)
         int noOfCoefficients = totalNeedToReconstitute - 1;
