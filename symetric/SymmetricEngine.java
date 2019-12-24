@@ -1,7 +1,5 @@
 package symetric;
 
-import util.CryptoTools;
-
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -13,7 +11,26 @@ import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * Encryption engine used for symmetric key encryption/decryption
+ */
 public class SymmetricEngine {
+
+    /**
+     * Uses the key and IV to decrypt the ciphertext
+     *
+     * @param ct             ciphertext to be decrypted
+     * @param k              key
+     * @param iv             iv
+     * @param transformation algorithm/modeOfOpp/padding
+     * @return decryption of cipher text using transformation in bytes
+     * @throws NoSuchPaddingException
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidAlgorithmParameterException
+     * @throws InvalidKeyException
+     * @throws BadPaddingException
+     * @throws IllegalBlockSizeException
+     */
     public static byte[] decrypt(byte[] ct, byte[] k, byte[] iv, String transformation) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
         String[] algorithmSpecs = transformation.split("/");
 
@@ -21,7 +38,7 @@ public class SymmetricEngine {
         Cipher cipher = Cipher.getInstance(transformation);
         if (iv == null) {
             cipher.init(Cipher.DECRYPT_MODE, key);
-        }else {
+        } else {
             IvParameterSpec ivParameterSpec = new IvParameterSpec(iv);
             cipher.init(Cipher.DECRYPT_MODE, key, ivParameterSpec);
         }
@@ -30,20 +47,4 @@ public class SymmetricEngine {
         return pt;
     }
 
-//    public static void main(String[] args) throws NoSuchPaddingException, InvalidKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
-//        byte[] keyBytes = CryptoTools.hexToBytes("9F0DCEDB322F3C6873F9256E01376BA4");
-//        byte[] ivBytes = CryptoTools.hexToBytes("20FC19123087BF6CAC8D0F1254123004");
-//        byte[] ct = CryptoTools.hexToBytes("F38ADBA8A7B4CC613578355032205D50");
-//        System.out.println(new String(SymmetricEngine.decrypt(ct, keyBytes, ivBytes, "AES/CBC/PKCS5Padding")));
-//
-//        keyBytes = "DO NOT TELL EVE!".getBytes();
-//        ivBytes = CryptoTools.hexToBytes("20FC19123087BF6CAC8D0F1254123004");
-//        ct = CryptoTools.hexToBytes("3188073EA5DB3F5C05B6307B3595607135F5D4B22F2C3EB710AA31377F78B997");
-//        System.out.println(new String(SymmetricEngine.decrypt(ct, keyBytes, ivBytes, "AES/CBC/PKCS5Padding")));
-//
-//        ct = CryptoTools.hexToBytes("734A59929CFBB9E6F64EEB71B4EB66420069E7910AE147F8BC308986E311262B");
-//        keyBytes = "thisisthekeydude".getBytes();
-//        System.out.println(new String(SymmetricEngine.decrypt(ct, keyBytes, null, "AES/ECB/PKCS5Padding")));
-//
-//    }
 }

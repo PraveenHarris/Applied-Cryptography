@@ -10,12 +10,12 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
-public class Q1to3CipherAPI {
+public class Q1to3 {
+
     public static void main(String[] args) throws NoSuchPaddingException, InvalidKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
-//        Q1();
-//        Q2();
+        Q1();
+        Q2();
         Q5();
-        
     }
 
     private static void Q1() throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
@@ -42,18 +42,17 @@ public class Q1to3CipherAPI {
 
     private static void Q5() throws NoSuchPaddingException, InvalidKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
         //Problem: Decrypt the ciphertext using scheme CT = E(~K, E(K, PT))
-        String secretKeySCII = "FACEBOOK";
+        String secretKeyASCII = "FACEBOOK";
         String ctHex = "8A9FF0E2CD27DA4DC7F0C810E73D0E3B3B27CA03762BAE85597995997E625BDF0FEC655994EDD4B0851D7955B3F66717A52F83D01D73ABD9C593DA8C8CCBB073BB19E78442D9AA6D13B307EC0E8EA191E6A21897A82F1A643DC3BE0E12854D01C6006AA1D0EB1B94CAC573908018F284";
 
         byte[] ct = CryptoTools.hexToBytes(ctHex);
-        byte[] key = secretKeySCII.getBytes();
+        byte[] key = secretKeyASCII.getBytes();
         byte[] keyBitComplement = MyTools.bitComplement(key);
 
         byte[] p0 = SymmetricEngine.decrypt(ct, keyBitComplement, null, "DES/ECB/NoPadding");
         byte[] p1 = SymmetricEngine.decrypt(p0, key, null, "DES/ECB/NoPadding");
 
         System.out.println(new String(p1));
-
     }
 
 }

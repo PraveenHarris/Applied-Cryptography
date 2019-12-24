@@ -1,4 +1,4 @@
-package test.TestPrep.T1;
+package symetric;
 
 import util.CryptoTools;
 import util.MyTools;
@@ -13,23 +13,24 @@ import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 
 public class Q4 {
-    public static void main(String[] args) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
 
-        /* YORK mode process
-            C0: E(K, bitComp(IV) xor P0)
-            C1: E(K, bitComp(C0) xor P1)
+    public static void main(String[] args) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
+        /* YORK mode of operation
+            C_0: E(K, bitComp(iv) xor P_0)
+            C_1: E(K, bitComp(C_0) xor P_1)
+            ...
+            C_n-1: E(K, bitComp(C_n-2) xor P_n-1)
          */
 
-        // ct, key, iv
+        // given: ct, key, iv
         String ctHex = "437DBAB5607137A5CFC1031114634087";
         String keyHex = "6B79466F724D4F50";
         String ivHex = "6976466F724D4F50";
         byte[] ctBytes = CryptoTools.hexToBytes(ctHex);
         byte[] keyBytes = CryptoTools.hexToBytes(keyHex);
         byte[] ivBytes = CryptoTools.hexToBytes(ivHex);
-        System.out.println("Ct (in bytes): " + new String(ctBytes));
 
-        // decrypted plaintext
+        // plaintext
         byte[] ptBytes = new byte[ctBytes.length];
 
         // define Cipher that will perform the decryption
@@ -49,7 +50,7 @@ public class Q4 {
         System.arraycopy(ivBytes, 0, prevCtBlock, 0, DES_BLOCK_SIZE);
 
         // mode of operation of YORK
-        for (int i=0; i < ptBytes.length; i+=DES_BLOCK_SIZE) {
+        for (int i = 0; i < ptBytes.length; i += DES_BLOCK_SIZE) {
             System.arraycopy(ctBytes, i, ctBlock, 0, DES_BLOCK_SIZE);
 
             byte[] temp = cipher.doFinal(ctBlock);
@@ -61,7 +62,8 @@ public class Q4 {
 
         }
 
+        System.out.println("CT (in bytes): " + new String(ctBytes));
         System.out.println("The plaintext is: " + new String(ptBytes) + "\n");
-
     }
+
 }
