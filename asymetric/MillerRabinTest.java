@@ -2,7 +2,16 @@ package asymetric;
 
 import java.math.BigInteger;
 
+/**
+ * The Miller-Rabin Test to test primality of a number
+ */
 public class MillerRabinTest {
+
+    /**
+     * Miller-Rabin test bottom up approach
+     * @param n number to be tested for primality
+     * @return "Probably Prime" or "COMPOSITE"
+     */
     public static String checkPrimality(BigInteger n) {
         BigInteger one = BigInteger.ONE;
         BigInteger base = BigInteger.TWO;

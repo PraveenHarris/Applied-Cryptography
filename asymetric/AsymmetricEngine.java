@@ -12,8 +12,25 @@ import java.security.PrivateKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.RSAPrivateKeySpec;
 
+/**
+ * Asymmetric Engine used for public-key encryption/decryption
+ */
 public class AsymmetricEngine {
 
+    /**
+     * Decrypts ciphertext using d and n
+     * @param ct ciphertext
+     * @param n public modulus
+     * @param d private key
+     * @param transformation algorithm/modeOfOp/padding
+     * @return decryption of the ciphertext in bytes
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeySpecException
+     * @throws NoSuchPaddingException
+     * @throws InvalidKeyException
+     * @throws BadPaddingException
+     * @throws IllegalBlockSizeException
+     */
     public static byte[] decrypt(BigInteger ct, BigInteger n, BigInteger d, String transformation) throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
         String[] algorithmSpecs = transformation.split("/");
 
