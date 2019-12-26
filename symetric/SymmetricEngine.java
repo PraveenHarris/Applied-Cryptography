@@ -18,11 +18,10 @@ public class SymmetricEngine {
 
     /**
      * Uses the key and IV to decrypt the ciphertext
-     *
      * @param ct             ciphertext to be decrypted
      * @param k              key
      * @param iv             iv
-     * @param transformation algorithm/modeOfOpp/padding
+     * @param transformation algorithm/modeOfOp/padding
      * @return decryption of cipher text using transformation in bytes
      * @throws NoSuchPaddingException
      * @throws NoSuchAlgorithmException
