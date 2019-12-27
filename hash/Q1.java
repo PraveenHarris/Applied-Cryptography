@@ -1,6 +1,5 @@
 package hash;
 
-import asymetric.AsymmetricEngine;
 import util.Hex;
 
 import javax.crypto.BadPaddingException;
@@ -11,7 +10,6 @@ import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.Base64;
 
 public class Q1 {
     public static void main(String[] args) throws NoSuchAlgorithmException, IllegalBlockSizeException, InvalidKeyException, BadPaddingException, InvalidKeySpecException, NoSuchPaddingException {
@@ -50,9 +48,11 @@ public class Q1 {
         System.out.println("Dec. Mess.:\t\t" + Hex.toString(decryptedMessage.toByteArray()));
 
         /*
-        I hashed the message and then encrypted it using my private expon. Alice can know that
-        I sent this message by decrypting it with my public exponent, because only I know the corresponding private exponent which was used for encryption. keyAlice can verify that the message hasn't been tampered
-        with by comparing the {hash of the message} with the {decrypted value of the encrypted message}.
+        I hashed the message and then encrypted it using my private exponent. Alice can know that
+        I sent this message by decrypting it with my public exponent, because only I know
+        the corresponding private exponent which I used to encrypt.
+        Alice can verify that the message hasn't been tampered with by comparing the {hash of the message}
+        with the {decrypted value of the encrypted message}.
          */
     }
 }

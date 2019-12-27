@@ -8,10 +8,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
+/**
+ * Compute HMAC of a given message using key
+ */
 public class HMACEngine {
 
+    // block sizes in bytes
     static final HashMap<String, Integer> blockSizes = new HashMap<>(){{
-        // block sizes in bytes
         put("SHA-1", 64);
         put("SHA-256", 64);
         put("SHA-512", 128);
@@ -19,6 +22,14 @@ public class HMACEngine {
         put("SHA3-512", 72);
     }};
 
+    /**
+     * Compute HMAC of a message using key
+     * @param m message
+     * @param key key
+     * @param algorithm hashing algorithm
+     * @return computed HMAC of the message
+     * @throws NoSuchAlgorithmException when the given algorithm is not supported
+     */
     public static byte[] computeHMAC(byte[] m, byte[] key, String algorithm) throws NoSuchAlgorithmException {
         byte[] opad = CryptoTools.hexToBytes( "5c");
         byte[] ipad = CryptoTools.hexToBytes("36");
@@ -51,32 +62,4 @@ public class HMACEngine {
         return h2;
     }
 
-//    public static void main(String[] args) throws NoSuchAlgorithmException {
-//        // Problem: Compute the HMAC of the message using SHA1 (with the key=K)
-//        byte[] m =  "The secret key is a unique piece of information that is used to compute the HMAC and is known both by the sender and the receiver of the message. This key will vary in length depending on the algorithm that you use.".getBytes();
-//        byte[] key = "This is an ultra-secret key".getBytes();
-//        byte[] hmac = HMACEngine.computeHMAC(m, key, "SHA-256");
-//        System.out.println(CryptoTools.bytesToHex(hmac));
-//    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
