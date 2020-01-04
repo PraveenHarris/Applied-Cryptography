@@ -3,16 +3,15 @@ package foundation;
 import util.CryptoTools;
 import util.MyTools;
 
-
-public class C_Exhaustive {
+/**
+ * Decrypt a Caesar encrypted message cryptanalytically using dot product
+ */
+public class CaesarCryptanalytic {
 
     public static void main(String[] args) throws Exception {
-
         // read ciphertext
         byte[] ct =  CryptoTools.fileToBytes("C:\\Users\\prave\\Documents\\York University\\Y3S1\\Applied Cryptography\\Code\\src\\data\\C_Exhaustive.ct");
-
-        // print ct
-        System.out.println(new String(ct));
+        System.out.println("ct: " + new String(ct));
 
         int mostOptimalShift = 0;
         double greatestDotProduct = 0;
