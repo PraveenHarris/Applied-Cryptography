@@ -31,7 +31,7 @@ public class Q4 {
         StringBuilder aliceSiftedKey = new StringBuilder();
         StringBuilder bobSiftedKey = new StringBuilder();
         int bitsShared = 0;
-        for (int i=0; i<polarizationBasis.length(); i++) {
+        for (int i = 0; i < polarizationBasis.length(); i++) {
             if (polarizationBasis.charAt(i) == bobBasis.charAt(i)) {
                 aliceSiftedKey.append(aliceRawKey.charAt(i));
                 bobSiftedKey.append(bobKeyString.charAt(i));
@@ -54,12 +54,30 @@ public class Q4 {
         }
         System.out.println("No of bits Eve guessed correct: " + bitsEveGuessedCorrect);
 
+         /*
+    Output:
+            Alice raw key:	0010010111001011
+            Polar. basis:	+++xx+++x+x++x+x
+            Eve basis:		x...x...x.......
+            Eve sifted key:	1...0...1.......
+            Bob basis:		++x+x++xx++x++x+
+            Bob sifted key:	1010010011101110
+            --------------------
+            Alice sifted key:	00010111
+            Bob sifted key:		10010111
+            Size of sifted key:	8
+            --------------------
+            No of bits shared:	7
+            --------------------
+            No of bits Eve guessed correct: 2
+     */
+
     }
 
     public static String getEveKeyString(String aliceRawKey, String polarizationBasis, String eveBasis) {
         Random random = new Random();
         StringBuilder eveKeyString = new StringBuilder();
-        for (int i=0; i<aliceRawKey.length(); i++) {
+        for (int i = 0; i < aliceRawKey.length(); i++) {
             char eveBase = eveBasis.charAt(i);
             if (eveBase == '.') {
                 eveKeyString.append(".");
@@ -78,7 +96,7 @@ public class Q4 {
     public static String getBobKeyString(String originalBasis, String eveBasis, String bobBasis, String rawKey, String eveKeyString) {
         Random random = new Random();
         StringBuilder bobKeyString = new StringBuilder();
-        for (int i=0; i<originalBasis.length(); i++) {
+        for (int i = 0; i < originalBasis.length(); i++) {
             if (eveBasis.charAt(i) == '.') {
                 // eve did not interfere
 
@@ -104,21 +122,4 @@ public class Q4 {
         return bobKeyString.toString();
     }
 
-    /*
-    Output:
-            Alice raw key:	0010010111001011
-            Polar. basis:	+++xx+++x+x++x+x
-            Eve basis:		x...x...x.......
-            Eve sifted key:	1...0...1.......
-            Bob basis:		++x+x++xx++x++x+
-            Bob sifted key:	1010010011101110
-            --------------------
-            Alice sifted key:	00010111
-            Bob sifted key:		10010111
-            Size of sifted key:	8
-            --------------------
-            No of bits shared:	7
-            --------------------
-            No of bits Eve guessed correct: 2
-     */
 }

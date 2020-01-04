@@ -1,13 +1,16 @@
 package stopics;
 
-import util.ArrayUtil;
-
 import java.util.HashSet;
 import java.util.Random;
-import java.util.Set;
 
+/**
+ * Generate shares to reconstitute a secret
+ */
 public class SecretShareEngine {
 
+    /**
+     * Custom data structure for holding x-y pairs of shares and coefficients
+     */
     class SharesAndCoeff {
         int[][] shares;
         int[] coeff;
@@ -19,6 +22,7 @@ public class SecretShareEngine {
     }
 
     /**
+     * Generate x shares where a total of y shares are needed to constitute the secret
      * @param totalNumberOfShares number of shares requested
      * @param totalNeedToReconstitute number of shares required to reconstitute the secret
      * @param M secret
@@ -41,7 +45,8 @@ public class SecretShareEngine {
         for (int i=0; i<totalNumberOfShares; i++) {
             int degree=1, y = M;
             for (int j=0; j<noOfCoefficients; j++) {
-                y += Math.pow(xCord[i], degree++) * coeff[j]; // y=..+bx^i+..
+                // y=..+bx^i+..
+                y += Math.pow(xCord[i], degree++) * coeff[j];
             }
             shares[i][0] = xCord[i];
             shares[i][1] = y % modulus;
@@ -50,6 +55,13 @@ public class SecretShareEngine {
         return new SharesAndCoeff(shares, coeff);
     }
 
+    /**
+     * Get distinct numbers within a range
+     * @param total total numbers required
+     * @param from starting from
+     * @param range used for ceiling
+     * @return array of distinct numbers
+     */
     public static int[] getDistinctNumbers(int total, int from, int range) {
         Random random = new Random();
         int[] rtn = new int[total];

@@ -11,7 +11,7 @@ public class Q9 {
         // shares generated
         System.out.println("---SHARES GENERATED");
         BigInteger actual = BigInteger.ZERO;
-        for (int i=0; i<shares.length; i++) {
+        for (int i = 0; i < shares.length; i++) {
             System.out.printf("%dth share:\t%s\n", i, shares[i]);
             actual = actual.xor(shares[i]);
         }
@@ -21,7 +21,6 @@ public class Q9 {
         System.out.println("exp:\t" + secret);
         System.out.println("actual:\t" + actual);
         System.out.println("Are they the same? " + secret.equals(actual));
-
 
     }
 
@@ -34,7 +33,7 @@ public class Q9 {
 
         // generate numberOfShares-1 shares
         BigInteger candidate, lastShare = secret;
-        for (int i=0; i<numberOfShares-1; i++) {
+        for (int i = 0; i < numberOfShares - 1; i++) {
             do {
                 candidate = new BigInteger(bitLength, new Random());
             } while (candidate.equals(BigInteger.ZERO));
@@ -44,11 +43,11 @@ public class Q9 {
         }
 
         // configure last share
-        shares[shares.length-1] = lastShare;
+        shares[shares.length - 1] = lastShare;
 
         // compare xor of all shares with secret to validate
         BigInteger actual = shares[0];
-        for (int i=1; i<numberOfShares; i++) {
+        for (int i = 1; i < numberOfShares; i++) {
             actual = actual.xor(shares[i]);
         }
 
