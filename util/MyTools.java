@@ -1,7 +1,5 @@
 package util;
 
-import java.util.Base64;
-
 public class MyTools {
 
     /**
@@ -19,6 +17,13 @@ public class MyTools {
         }
     }
 
+    /**
+     * Perform Caesar shift on an array
+     * @param arr given array
+     * @param shift number of shifts
+     * @param clockwise true => encrypt, false => decrypt
+     * @return Caesar shifted array
+     */
     public static byte[] shiftAllBy(byte[] arr, int shift, boolean clockwise) {
         byte[] rtn = new byte[arr.length];
         for (int i = 0; i < arr.length; i++) {
@@ -41,6 +46,11 @@ public class MyTools {
         return normalizeFrequencyVector(vector, (double) initialLength);
     }
 
+    /**
+     * Bitwise complement of an array
+     * @param byteArray array to find the bitwise complement
+     * @return bit complement of given array
+     */
     public static byte[] bitComplement(byte[] byteArray) {
         byte[] rtn = new byte[byteArray.length];
         for (int i=0; i<byteArray.length; i++) {
@@ -50,6 +60,12 @@ public class MyTools {
         return rtn;
     }
 
+    /**
+     * XOR two byte arrays
+     * @param a1 array_1
+     * @param a2 array_2
+     * @return array_1 XOR array_2
+     */
     public static byte[] XORByteArrays(byte[] a1, byte[] a2) {
         byte[] rtn = new byte[Integer.max(a1.length, a2.length)];
 
@@ -82,6 +98,12 @@ public class MyTools {
         return MyTools.computeDotProduct(normalized);
     }
 
+    /**
+     * Compute index of coincidence
+     * @param ct ciphertext
+     * @param maxIterations number of iterations
+     * @return IOC values
+     */
     public static double[] computeIC(String ct, int maxIterations) {
         double[] icValues = new double[maxIterations];
         for (int i=1; i<maxIterations; i++) {
@@ -97,16 +119,12 @@ public class MyTools {
         return icValues;
     }
 
-    public static String byteArrayToBinaryString(byte[] array) {
-        StringBuilder rtn = new StringBuilder();
-        for (byte b : array) {
-            rtn.append(Integer.toBinaryString(b & 255 | 256).substring(1));
-        }
-
-        return rtn.toString();
-    }
-
-
+    /**
+     * Concatenate two binary arrays
+     * @param b1 array_1
+     * @param b2 array_2
+     * @return concatenation of given arrays
+     */
     public static byte[] concatenateByteArrays(byte[] b1, byte[] b2) {
         byte[] temp = b1;
         b1 = new byte[b1.length + b2.length];
