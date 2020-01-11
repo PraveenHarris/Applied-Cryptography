@@ -1,7 +1,5 @@
 package asymetric;
 
-import util.MillerRabinTopDown;
-
 import java.math.BigInteger;
 
 public class Q5 {
