@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class HMACEngine {
 
     // block sizes in bytes
-    static final HashMap<String, Integer> blockSizes = new HashMap<>(){{
+    static final HashMap<String, Integer> blockSizes = new HashMap<>() {{
         put("SHA-1", 64);
         put("SHA-256", 64);
         put("SHA-512", 128);
@@ -23,14 +23,15 @@ public class HMACEngine {
 
     /**
      * Compute HMAC of a message using key
-     * @param m message
-     * @param key key
+     *
+     * @param m         message
+     * @param key       key
      * @param algorithm hashing algorithm
      * @return computed HMAC of the message
      * @throws NoSuchAlgorithmException when the given algorithm is not supported
      */
     public static byte[] computeHMAC(byte[] m, byte[] key, String algorithm) throws NoSuchAlgorithmException {
-        byte[] opad = CryptoTools.hexToBytes( "5c");
+        byte[] opad = CryptoTools.hexToBytes("5c");
         byte[] ipad = CryptoTools.hexToBytes("36");
 
         MessageDigest digest = MessageDigest.getInstance(algorithm);

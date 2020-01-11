@@ -45,7 +45,7 @@ public class Q2 {
         // decrypt m_prime and s_prime using privB
         BigInteger m = m_prime.modPow(dB, nB);
         BigInteger s = s_prime.modPow(dB, nB);
-        System.out.println("m_prime after decrypting with privB:\t" +  m);
+        System.out.println("m_prime after decrypting with privB:\t" + m);
         System.out.println("s_prime after decrypting with privB:\t" + s);
         System.out.println();
 

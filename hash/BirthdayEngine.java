@@ -11,8 +11,9 @@ public class BirthdayEngine {
 
     /**
      * Computing the probability for the Birthday problem using factorials
+     *
      * @param totalNumberOfDays number of days in calendar
-     * @param numberOfPeople number of people born on the same day
+     * @param numberOfPeople    number of people born on the same day
      * @return actual probability of m people born on th same day
      */
     public static double computeActualProbability(int totalNumberOfDays, int numberOfPeople) {
@@ -39,8 +40,9 @@ public class BirthdayEngine {
 
     /**
      * Approximating the birthday problem using Taylor series expansion of e
+     *
      * @param totalNumberOfDays number of days in calendar
-     * @param numberOfPeople number of people born on the same day
+     * @param numberOfPeople    number of people born on the same day
      * @return approximated probability of m people born on th same day
      */
     public static double computeApproximation(int totalNumberOfDays, int numberOfPeople) {
@@ -52,8 +54,9 @@ public class BirthdayEngine {
 
     /**
      * Compute factorial
+     *
      * @param from ending point
-     * @param to starting point
+     * @param to   starting point
      * @return computed factorial
      */
     private static BigInteger factorial(BigInteger from, BigInteger to) {
