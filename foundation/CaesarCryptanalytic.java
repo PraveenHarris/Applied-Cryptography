@@ -10,7 +10,7 @@ public class CaesarCryptanalytic {
 
     public static void main(String[] args) throws Exception {
         // read ciphertext
-        byte[] ct = CryptoTools.fileToBytes("C:\\Users\\prave\\Documents\\York University\\Y3S1\\Applied Cryptography\\Code\\src\\data\\C_Exhaustive.ct");
+        byte[] ct = CryptoTools.fileToBytes("INSERT_FILE_PATH");
         System.out.println("ct: " + new String(ct));
 
         int mostOptimalShift = 0;
