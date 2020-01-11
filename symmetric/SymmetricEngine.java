@@ -1,4 +1,4 @@
-package symetric;
+package symmetric;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
