@@ -1,6 +1,6 @@
 package hash;
 
-import util.Hex;
+import util.CryptoTools;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -39,13 +39,13 @@ public class Q1 {
 
         System.out.println("Orig. Mess.:\t"  + message);
         System.out.println("Enc. Mess.:\t\t" + encryptedMessage);
-        System.out.println("Signature 0x:\t" + Hex.toString(signature));
+        System.out.println("Signature 0x:\t" + CryptoTools.bytesToHex(signature));
         System.out.println();
 
         // Alice receives: message and signature
         BigInteger decryptedMessage = (new BigInteger(signature)).modPow(e, n);
-        System.out.println("Hashed Mess.:\t" + Hex.toString(digest.digest(message.getBytes())));
-        System.out.println("Dec. Mess.:\t\t" + Hex.toString(decryptedMessage.toByteArray()));
+        System.out.println("Hashed Mess.:\t" + CryptoTools.bytesToHex(digest.digest(message.getBytes())));
+        System.out.println("Dec. Mess.:\t\t" + CryptoTools.bytesToHex(decryptedMessage.toByteArray()));
 
         /*
         I hashed the message and then encrypted it using my private exponent. Alice can know that

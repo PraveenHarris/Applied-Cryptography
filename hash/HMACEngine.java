@@ -1,6 +1,5 @@
 package hash;
 
-import util.Binary;
 import util.CryptoTools;
 import util.MyTools;
 
@@ -53,8 +52,8 @@ public class HMACEngine {
         }
 
         // xor with key
-        byte[] xor_outer = Binary.xor(key, opad);
-        byte[] xor_inner = Binary.xor(key, ipad);
+        byte[] xor_outer = MyTools.XORByteArrays(key, opad);
+        byte[] xor_inner = MyTools.XORByteArrays(key, ipad);
 
         byte[] h1 = digest.digest(MyTools.concatenateByteArrays(xor_inner, m));
         byte[] h2 = digest.digest(MyTools.concatenateByteArrays(xor_outer, h1));
