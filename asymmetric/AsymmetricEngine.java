@@ -1,4 +1,4 @@
-package asymetric;
+package asymmetric;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;

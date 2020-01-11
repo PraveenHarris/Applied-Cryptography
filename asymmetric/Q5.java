@@ -1,4 +1,4 @@
-package asymetric;
+package asymmetric;
 
 import java.math.BigInteger;
 
