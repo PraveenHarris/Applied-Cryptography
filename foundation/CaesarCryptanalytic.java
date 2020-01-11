@@ -10,18 +10,18 @@ public class CaesarCryptanalytic {
 
     public static void main(String[] args) throws Exception {
         // read ciphertext
-        byte[] ct =  CryptoTools.fileToBytes("C:\\Users\\prave\\Documents\\York University\\Y3S1\\Applied Cryptography\\Code\\src\\data\\C_Exhaustive.ct");
+        byte[] ct = CryptoTools.fileToBytes("C:\\Users\\prave\\Documents\\York University\\Y3S1\\Applied Cryptography\\Code\\src\\data\\C_Exhaustive.ct");
         System.out.println("ct: " + new String(ct));
 
         int mostOptimalShift = 0;
         double greatestDotProduct = 0;
 
         // try all 26 possible shifts
-        for (int shift=0; shift < 26; shift++) {
+        for (int shift = 0; shift < 26; shift++) {
             byte[] potentialPt = new byte[ct.length];
 
             // decrypt by shifting all bytes to the 'left'
-            for (int i=0; i<ct.length; i++) {
+            for (int i = 0; i < ct.length; i++) {
                 int asciiCode = (int) ct[i];
                 byte decryptedChar = MyTools.shiftBy(asciiCode, shift, false);
                 potentialPt[i] = decryptedChar;
