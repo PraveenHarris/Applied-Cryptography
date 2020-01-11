@@ -12,7 +12,7 @@ public class DiscreteLogEngine {
 
         BigInteger pow = new BigInteger("1");
         BigInteger result = base.modPow(pow, modulus);
-        while (! result.equals(val)) {
+        while (!result.equals(val)) {
 
             pow = pow.add(BigInteger.ONE);
             result = base.modPow(pow, modulus);
@@ -41,7 +41,7 @@ public class DiscreteLogEngine {
             set.add(val);
         }
 
-        if ((set.size()==(m-2)) && base.modPow(modulus.subtract(BigInteger.ONE), modulus).equals(BigInteger.ONE)) {
+        if ((set.size() == (m - 2)) && base.modPow(modulus.subtract(BigInteger.ONE), modulus).equals(BigInteger.ONE)) {
             return true;
         } else {
             return false;

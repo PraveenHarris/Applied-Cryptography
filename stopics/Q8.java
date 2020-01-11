@@ -22,9 +22,9 @@ public class Q8 {
         System.out.println(CryptoTools.bytesToHex(sessionKeyA.toByteArray()));
         String keyAHex = CryptoTools.bytesToHex(sessionKeyA.toByteArray());
         String keyBHex = CryptoTools.bytesToHex(sessionKeyB.toByteArray());
-        System.out.println("Are the generated session keys equal? " +  keyAHex.equals(keyBHex));
+        System.out.println("Are the generated session keys equal? " + keyAHex.equals(keyBHex));
         String answer = "00C15A519D8BB2050044D9E7F9803CCF66";
-        System.out.println("Are the generated session keys equal to the desired answer? " +  keyAHex.equals(answer));
+        System.out.println("Are the generated session keys equal to the desired answer? " + keyAHex.equals(answer));
 
     }
 }
