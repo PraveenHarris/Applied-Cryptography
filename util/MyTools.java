@@ -4,8 +4,9 @@ public class MyTools {
 
     /**
      * Perform Caesar shift on a letter
+     *
      * @param asciiCode the ascii code of the letter
-     * @param shift number of single shifts
+     * @param shift     number of single shifts
      * @param clockwise true => encrypt, false => decrypt
      * @return byte shifted by value
      */
@@ -19,8 +20,9 @@ public class MyTools {
 
     /**
      * Perform Caesar shift on an array
-     * @param arr given array
-     * @param shift number of shifts
+     *
+     * @param arr       given array
+     * @param shift     number of shifts
      * @param clockwise true => encrypt, false => decrypt
      * @return Caesar shifted array
      */
@@ -48,12 +50,13 @@ public class MyTools {
 
     /**
      * Bitwise complement of an array
+     *
      * @param byteArray array to find the bitwise complement
      * @return bit complement of given array
      */
     public static byte[] bitComplement(byte[] byteArray) {
         byte[] rtn = new byte[byteArray.length];
-        for (int i=0; i<byteArray.length; i++) {
+        for (int i = 0; i < byteArray.length; i++) {
             rtn[i] = (byte) ~byteArray[i];
         }
 
@@ -62,6 +65,7 @@ public class MyTools {
 
     /**
      * XOR two byte arrays
+     *
      * @param a1 array_1
      * @param a2 array_2
      * @return array_1 XOR array_2
@@ -70,7 +74,7 @@ public class MyTools {
         byte[] rtn = new byte[Integer.max(a1.length, a2.length)];
 
 
-        for (int i=0; i<rtn.length; i++) {
+        for (int i = 0; i < rtn.length; i++) {
             rtn[i] = (byte) (a1[i] ^ a2[i]);
         }
 
@@ -79,12 +83,13 @@ public class MyTools {
 
     /**
      * Find dot product of a frequency vector and the english frequency vector
+     *
      * @param vector to find dot product with against frequency vector
      * @return dot product
      */
     public static double computeDotProduct(double[] vector) {
         double dp = 0;
-        for (int i=0; i<26; i++) {
+        for (int i = 0; i < 26; i++) {
             dp += vector[i] * CryptoTools.ENGLISH[i];
         }
 
@@ -100,16 +105,17 @@ public class MyTools {
 
     /**
      * Compute index of coincidence
-     * @param ct ciphertext
+     *
+     * @param ct            ciphertext
      * @param maxIterations number of iterations
      * @return IOC values
      */
     public static double[] computeIC(String ct, int maxIterations) {
         double[] icValues = new double[maxIterations];
-        for (int i=1; i<maxIterations; i++) {
+        for (int i = 1; i < maxIterations; i++) {
             int counter = 0;
-            for (int j=0; j<ct.length()-i; j++) {
-                if (ct.charAt(j) == ct.charAt(j+i))
+            for (int j = 0; j < ct.length() - i; j++) {
+                if (ct.charAt(j) == ct.charAt(j + i))
                     counter++;
             }
 
@@ -121,6 +127,7 @@ public class MyTools {
 
     /**
      * Concatenate two binary arrays
+     *
      * @param b1 array_1
      * @param b2 array_2
      * @return concatenation of given arrays
