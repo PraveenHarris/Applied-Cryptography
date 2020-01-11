@@ -9,6 +9,7 @@ public class MillerRabinTest {
 
     /**
      * Miller-Rabin test bottom up approach
+     *
      * @param n number to be tested for primality
      * @return "Probably Prime" or "COMPOSITE"
      */
@@ -29,9 +30,9 @@ public class MillerRabinTest {
         BigInteger b1 = b0;
         do {
             System.out.println("FROM asymmetric/MillerRabinTest.java:\t" + b1);
-            b1  = b1.pow(2).mod(n);
+            b1 = b1.pow(2).mod(n);
             if (b1.equals(nMinusOne))
-                return  "Probably Prime";
+                return "Probably Prime";
 
         } while (b1.equals(one));
 
@@ -46,7 +47,7 @@ public class MillerRabinTest {
         BigInteger[] quotientAndRemainder;
         BigInteger m = BigInteger.ONE;
 
-        for (exp=0; Integer.MIN_VALUE < exp; exp+=1) {
+        for (exp = 0; Integer.MIN_VALUE < exp; exp += 1) {
             quotientAndRemainder = n0.divideAndRemainder(base.pow(exp));
 
             if (!quotientAndRemainder[1].equals(BigInteger.ZERO))
@@ -55,6 +56,6 @@ public class MillerRabinTest {
             m = quotientAndRemainder[0];
         }
 
-        return new BigInteger[]{new BigInteger(String.valueOf(exp-1)), m};
+        return new BigInteger[]{new BigInteger(String.valueOf(exp - 1)), m};
     }
 }
